@@ -3,9 +3,9 @@
 #ARQ_TEST="$0-test.txt"
 ARQ_TEST="ipv4-test.txt"
 
-#OCTETO=
+OCTETO="((1[0-9]|[1-9])?[0-9]|2([0-4][0-9]|5[0-5]))"
 
-IPV4="((1[0-9]|[1-9])?[0-9]|2([0-4][0-9]|5[0-5]))(\.((1[0-9]|[1-9])?[0-9]|2([0-4][0-9]|5[0-5]))){3}"
+IPV4="$OCTETO(\.$OCTETO){3}"
 
 grep --color=always -E \"$IPV4\" $ARQ_TEST
 echo -e "\n"
