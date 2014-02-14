@@ -21,14 +21,14 @@ IPV4="${OCTETO}(\.${OCTETO}){3}"
 ################################################################################
 
 # Executa a busca pelas expressões que combinam na base de teste
-CORRETO1=$(grep -E \"${IPV4}\" ${ARQ_TEST})
+CORRETO1=$(grep -v ^# ${ARQ_TEST} | grep --color=never -E \"${IPV4}\")
 # Busca as linhas que devem estar corretas para verificar a corretude
-CORRETO2=$(grep -F "//Correto" ${ARQ_TEST})
+CORRETO2=$(grep -v ^# ${ARQ_TEST} | grep --color=never -F "//Correto")
 
 # Busca as linhas que não casam com a expressão regular
-INCORRETO1=$(grep -Ev \"${IPV4}\" ${ARQ_TEST})
+INCORRETO1=$(grep -v ^# ${ARQ_TEST} | grep --color=never -Ev \"${IPV4}\")
 # Busca as linhas que devem estar incorretas para verificar a corretude
-INCORRETO2=$(grep -F "//Incorreto" ${ARQ_TEST})
+INCORRETO2=$(grep -v ^# ${ARQ_TEST} | grep --color=never -F "//Incorreto")
 
 ################################################################################
 
@@ -66,7 +66,7 @@ echo ""
 # imprime o resultado da busca na base de teste
 if test $# -eq 1 -a "$1" = "--debug" -a ${CORRETO_BOOL} -eq 1
 then
-   grep -E \"${IPV4}\" ${ARQ_TEST}
+   grep -v ^# ${ARQ_TEST} | grep --color=never -E \"${IPV4}\"
    echo ""
 fi
 
@@ -75,7 +75,7 @@ fi
 # imprime o resultado do inverso da busca na base de teste
 if test $# -eq 1 -a "$1" = "--debug" -a ${INCORRETO_BOOL} -eq 1
 then
-   grep -Ev \"${IPV4}\" ${ARQ_TEST}
+   grep -v ^# ${ARQ_TEST} | grep --color=never -Ev \"${IPV4}\"
    echo ""
 fi
 
