@@ -1,0 +1,110 @@
+var IP = [];
+
+# Endereço IPv4-mapeado (implementação futura)
+#IP[0]  = "::ffff:197.168.110.154";                    //Correto
+#IP[1]  = "::ffff:197.168.0.1";                        //Correto
+#IP[2]  = "::ffff:197.168..0.1";                       //Incorreto
+#IP[3]  = "::ffff:197.168.";                           //Incorreto
+#IP[4]  = "::ffff:256.168.110.154";                    //Incorreto
+#IP[5]  = "::ffff:255.255.255.255";                    //Correto
+#IP[6]  = "::ffff:255.255.255.255.255";                //Incorreto
+#IP[7]  = "::ffff:";                                   //Incorreto
+#IP[8]  = "::ffff:300.111.111.111";                    //Incorreto
+#IP[9]  = "::ffff:111.111.111.1111";                   //Incorreto
+#IP[10] = "::ffff:0.0.0.0";                            //Correto
+#IP[11] = "::ffff:0.0.0.011";                          //Incorreto
+#IP[12] = "::ffff:192.168..1";                         //Incorreto
+#IP[13] = "::ffff:192.168.*.1";                        //Incorreto
+
+# Testes arbitrários
+IP[14] = "";                                          //Incorreto
+IP[15] = "2001:db8:cafe:1::1";                        //Correto
+IP[16] = "2001:db8:cafe:1:::1";                       //Incorreto
+IP[17] = "2001:db8:*:1::1";                           //Incorreto
+IP[18] = "2001:db8::1::1";                            //Incorreto
+IP[19] = "2001:db8:1:1";                              //Incorreto
+IP[20] = "2001:db8:1:1:";                             //Incorreto
+IP[21] = "2001:daab8:1:1:";                           //Incorreto
+IP[22] = "FE80::1";                                   //Correto
+IP[23] = "FC00::1";                                   //Correto
+IP[24] = "2000:0:0:0:0:0:0:0";                        //Correto
+IP[25] = "3fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Correto
+IP[26] = "Ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Correto
+IP[27] = "FF02::1";                                   //Correto
+IP[28] = "FF02::1:FF00:0000";                         //Correto
+IP[29] = "0000:0000:0000:0000:0000:0000:0000:0001";   //Correto
+IP[30] = "0:0:0:0:0:0:0:1";                           //Correto
+IP[31] = "0:00:0:0:0:0:0:1";                          //Correto
+IP[32] = "0:0:0:0:0:0:0:0:1";                         //Incorreto
+IP[33] = "::1";                                       //Correto
+IP[34] = "0::1";                                      //Correto
+IP[35] = "100::";                                     //Correto
+IP[36] = "0::";                                       //Correto
+IP[37] = "::0";                                       //Correto
+IP[38] = "0::0";                                      //Correto
+IP[39] = "1111:2222::5555:";                          //Incorreto
+
+# Conjunto do aceitação básico
+IP[40] = "1:2:3:4:5:6:7:8"                            //Correto
+
+IP[41] = "1:2:3:4:5:6:7::"                            //Correto
+IP[42] = "1:2:3:4:5:6::"                              //Correto
+IP[43] = "1:2:3:4:5::"                                //Correto
+IP[44] = "1:2:3:4::"                                  //Correto
+IP[45] = "1:2:3::"                                    //Correto
+IP[46] = "1:2::"                                      //Correto
+IP[47] = "1::"                                        //Correto
+
+IP[48] = "1:2:3:4:5:6::8"                             //Correto
+IP[49] = "1:2:3:4:5::8"                               //Correto
+IP[50] = "1:2:3:4::8"                                 //Correto
+IP[51] = "1:2:3::8"                                   //Correto
+IP[52] = "1:2::8"                                     //Correto
+IP[53] = "1::8"                                       //Correto
+
+IP[54] = "1:2:3:4:5::7:8"                             //Correto
+IP[55] = "1:2:3:4::7:8"                               //Correto
+IP[56] = "1:2:3::7:8"                                 //Correto
+IP[57] = "1:2::7:8"                                   //Correto
+IP[58] = "1::7:8"                                     //Correto
+
+IP[59] = "1:2:3:4::6:7:8"                             //Correto
+IP[60] = "1:2:3::6:7:8"                               //Correto
+IP[61] = "1:2::6:7:8"                                 //Correto
+IP[62] = "1::6:7:8"                                   //Correto
+
+IP[63] = "1:2:3::5:6:7:8"                             //Correto
+IP[64] = "1:2::5:6:7:8"                               //Correto
+IP[65] = "1::5:6:7:8"                                 //Correto
+
+IP[66] = "1:2::4:5:6:7:8"                             //Correto
+IP[67] = "1::4:5:6:7:8"                               //Correto
+
+IP[68] = "1::3:4:5:6:7:8"                             //Correto
+
+IP[69] = "::2:3:4:5:6:7:8"                            //Correto
+IP[70] = "::3:4:5:6:7:8"                              //Correto
+IP[71] = "::4:5:6:7:8"                                //Correto
+IP[72] = "::5:6:7:8"                                  //Correto
+IP[73] = "::6:7:8"                                    //Correto
+IP[74] = "::7:8"                                      //Correto
+IP[75] = "::8"                                        //Correto
+
+IP[76] = "::"                                         //Correto
+
+# Adequação a RFC 5952 (implementação futura)
+#2001:db8:0:0:0:0:2:1                                  //Correto
+#2001:db8::2:1                                         //Correto
+#2001:db8::0:2:1                                       //Incorreto
+#2001:db8:0:1:1:1:1:1                                  //Correto
+#2001:db8::1:1:1:1:1                                   //Incorreto
+#2001:0:0:1:0:0:0:1                                    //Correto
+#2001::1:0:0:0:1                                       //Incorreto
+#2001:0:0:1::1                                         //Correto
+#2001:db8:0:0:1:0:0:1                                  //Correto
+#2001:db8::1:0:0:1                                     //Correto
+#2001:db8:0:0:1::1                                     //Incorreto
+#2001:db8::1                                           //Correto
+#2001:0db8::0001                                       //Incorreto
+#2001:db8:cafe::1                                      //Correto
+#2001:DB8:CAFE::1                                      //Incorreto
