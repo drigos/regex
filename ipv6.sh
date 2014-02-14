@@ -2,9 +2,9 @@
 # Serão feitas algumas alterações para remover pequensa redundâncias,
 # endereços deprecados e posteriormente adequado a RFC 5952.
 
+OCTETO="((1[0-9]|[1-9])?[0-9]|2([0-4][0-9]|5[0-5]))"
+RE_IPV4="${OCTETO}(\.${OCTETO}){3}"
 # Esse trecho de código foi retirado de https://gist.github.com/syzdek/6086792
-RE_IPV4="((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])"
-
 SEG="[0-9a-fA-F]{1,4}"
  
 RE_IPV6="([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|"                    # TEST: 1:2:3:4:5:6:7:8
