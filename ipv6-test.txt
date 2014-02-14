@@ -1,4 +1,4 @@
-var IP = [];
+#var IP = [];
 
 # Endereço IPv4-mapeado (implementação futura)
 #IP[0]  = "::ffff:197.168.110.154";                    //Correto
