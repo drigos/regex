@@ -1,4 +1,4 @@
-var IP = [];
+var IP = [];                      //Incorreto
 IP[0]  = "197.168.110.154";       //Correto
 IP[1]  = "197.168.0.1";           //Correto
 IP[2]  = "197.168..0.1";          //Incorreto
