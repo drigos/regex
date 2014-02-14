@@ -9,35 +9,57 @@ then
    exit
 fi
 
+#############
+
 OCTETO="((1[0-9]|[1-9])?[0-9]|2([0-4][0-9]|5[0-5]))"
 IPV4="${OCTETO}(\.${OCTETO}){3}"
 
-grep --color=always -E \"${IPV4}\" ${ARQ_TEST}
+#############
+
 CORRETO1=$(grep -E \"${IPV4}\" ${ARQ_TEST})
 CORRETO2=$(grep -F "//Correto" ${ARQ_TEST})
 
-echo ""
-
-grep --color=always -Ev \"${IPV4}\" ${ARQ_TEST}
 INCORRETO1=$(grep -Ev \"${IPV4}\" ${ARQ_TEST})
 INCORRETO2=$(grep -F "//Incorreto" ${ARQ_TEST})
 
-echo ""
+#############
 
-echo -n "Corretude dos valores corretos:   "
+CORRETUDE_MSG="Corretude dos valores corretos:   "
 if test "${CORRETO1}" = "${CORRETO2}"
 then
-   echo "Ok"
+   CORRETUDE_MSG="${CORRETUDE_MSG}Ok\n"
+   CORRETO_BOOL=0
 else
-   echo "Fail"
+   CORRETUDE_MSG="${CORRETUDE_MSG}Fail\n"
+   CORRETO_BOOL=1
 fi
 
-echo -n "Corretude dos valores incorretos: "
+CORRETUDE_MSG="${CORRETUDE_MSG}Corretude dos valores incorretos: "
 if test "${INCORRETO1}" = "${INCORRETO2}"
 then
-   echo "Ok"
+   CORRETUDE_MSG="${CORRETUDE_MSG}Ok\n"
+   INCORRETO_BOOL=0
 else
-   echo "Fail"
+   CORRETUDE_MSG="${CORRETUDE_MSG}Fail\n"
+   INCORRETO_BOOL=1
 fi
 
+#############
+
 echo ""
+
+if test $# -eq 1 -a "$1" = "--debug" -a ${CORRETO_BOOL} -eq 1
+then
+   grep -E \"${IPV4}\" ${ARQ_TEST}
+   echo ""
+fi
+
+if test $# -eq 1 -a "$1" = "--debug" -a ${INCORRETO_BOOL} -eq 1
+then
+   grep -Ev \"${IPV4}\" ${ARQ_TEST}
+   echo ""
+fi
+
+#############
+
+echo -e "${CORRETUDE_MSG}"
