@@ -47,50 +47,50 @@ IP[39] = "1111:2222::5555:";                          //Incorreto
 # Conjunto do aceitação básico
 IP[40] = "1:2:3:4:5:6:7:8"                            //Correto
 
-IP[41] = "1:2:3:4:5:6:7::"                            //Correto
-IP[42] = "1:2:3:4:5:6::"                              //Correto
-IP[43] = "1:2:3:4:5::"                                //Correto
-IP[44] = "1:2:3:4::"                                  //Correto
-IP[45] = "1:2:3::"                                    //Correto
-IP[46] = "1:2::"                                      //Correto
-IP[47] = "1::"                                        //Correto
+IP[41] = "1:2:3:4:5:6:7::";                           //Correto
+IP[42] = "1:2:3:4:5:6::";                             //Correto
+IP[43] = "1:2:3:4:5::";                               //Correto
+IP[44] = "1:2:3:4::";                                 //Correto
+IP[45] = "1:2:3::";                                   //Correto
+IP[46] = "1:2::";                                     //Correto
+IP[47] = "1::";                                       //Correto
 
-IP[48] = "1:2:3:4:5:6::8"                             //Correto
-IP[49] = "1:2:3:4:5::8"                               //Correto
-IP[50] = "1:2:3:4::8"                                 //Correto
-IP[51] = "1:2:3::8"                                   //Correto
-IP[52] = "1:2::8"                                     //Correto
-IP[53] = "1::8"                                       //Correto
+IP[48] = "1:2:3:4:5:6::8";                            //Correto
+IP[49] = "1:2:3:4:5::8";                              //Correto
+IP[50] = "1:2:3:4::8";                                //Correto
+IP[51] = "1:2:3::8";                                  //Correto
+IP[52] = "1:2::8";                                    //Correto
+IP[53] = "1::8";                                      //Correto
 
-IP[54] = "1:2:3:4:5::7:8"                             //Correto
-IP[55] = "1:2:3:4::7:8"                               //Correto
-IP[56] = "1:2:3::7:8"                                 //Correto
-IP[57] = "1:2::7:8"                                   //Correto
-IP[58] = "1::7:8"                                     //Correto
+IP[54] = "1:2:3:4:5::7:8";                            //Correto
+IP[55] = "1:2:3:4::7:8";                              //Correto
+IP[56] = "1:2:3::7:8";                                //Correto
+IP[57] = "1:2::7:8";                                  //Correto
+IP[58] = "1::7:8";                                    //Correto
 
-IP[59] = "1:2:3:4::6:7:8"                             //Correto
-IP[60] = "1:2:3::6:7:8"                               //Correto
-IP[61] = "1:2::6:7:8"                                 //Correto
-IP[62] = "1::6:7:8"                                   //Correto
+IP[59] = "1:2:3:4::6:7:8";                            //Correto
+IP[60] = "1:2:3::6:7:8";                              //Correto
+IP[61] = "1:2::6:7:8";                                //Correto
+IP[62] = "1::6:7:8";                                  //Correto
 
-IP[63] = "1:2:3::5:6:7:8"                             //Correto
-IP[64] = "1:2::5:6:7:8"                               //Correto
-IP[65] = "1::5:6:7:8"                                 //Correto
+IP[63] = "1:2:3::5:6:7:8";                            //Correto
+IP[64] = "1:2::5:6:7:8";                              //Correto
+IP[65] = "1::5:6:7:8";                                //Correto
 
-IP[66] = "1:2::4:5:6:7:8"                             //Correto
-IP[67] = "1::4:5:6:7:8"                               //Correto
+IP[66] = "1:2::4:5:6:7:8";                            //Correto
+IP[67] = "1::4:5:6:7:8";                              //Correto
 
-IP[68] = "1::3:4:5:6:7:8"                             //Correto
+IP[68] = "1::3:4:5:6:7:8";                            //Correto
 
-IP[69] = "::2:3:4:5:6:7:8"                            //Correto
-IP[70] = "::3:4:5:6:7:8"                              //Correto
-IP[71] = "::4:5:6:7:8"                                //Correto
-IP[72] = "::5:6:7:8"                                  //Correto
-IP[73] = "::6:7:8"                                    //Correto
-IP[74] = "::7:8"                                      //Correto
-IP[75] = "::8"                                        //Correto
+IP[69] = "::2:3:4:5:6:7:8";                           //Correto
+IP[70] = "::3:4:5:6:7:8";                             //Correto
+IP[71] = "::4:5:6:7:8";                               //Correto
+IP[72] = "::5:6:7:8";                                 //Correto
+IP[73] = "::6:7:8";                                   //Correto
+IP[74] = "::7:8";                                     //Correto
+IP[75] = "::8";                                       //Correto
 
-IP[76] = "::"                                         //Correto
+IP[76] = "::";                                        //Correto
 
 # Adequação a RFC 5952 (implementação futura)
 #2001:db8:0:0:0:0:2:1                                  //Correto
