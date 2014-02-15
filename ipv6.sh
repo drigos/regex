@@ -42,14 +42,14 @@ RE_IPV6="${RE_IPV6})"
 ################################################################################
 
 # Executa a busca pelas expressões que combinam na base de teste
-CORRETO1=$(grep -v "^#" ${ARQ_TEST} | grep --color=never -E "\"${RE_IPV6}\"")
+CORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE_IPV6}\"")
 # Busca as linhas que devem estar corretas para verificar a corretude
-CORRETO2=$(grep -v "^#" ${ARQ_TEST} | grep --color=never -F "//Correto")
+CORRETO2=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -F "//Correto")
 
 # Busca as linhas que não casam com a expressão regular
-INCORRETO1=$(grep -v "^#" ${ARQ_TEST} | grep --color=never -Ev "\"${RE_IPV6}\"")
+INCORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -Ev "\"${RE_IPV6}\"")
 # Busca as linhas que devem estar incorretas para verificar a corretude
-INCORRETO2=$(grep -v "^#" ${ARQ_TEST} | grep --color=never -F "//Incorreto")
+INCORRETO2=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -F "//Incorreto")
 
 ################################################################################
 
@@ -87,7 +87,7 @@ echo ""
 # imprime o resultado da busca na base de teste
 if test $# -eq 1 -a "$1" = "--debug" -a ${CORRETO_BOOL} -eq 1
 then
-   grep -v "^#" ${ARQ_TEST} | grep --color=never -E "\"${RE_IPV6}\""
+   sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE_IPV6}\""
    echo ""
 fi
 
@@ -96,7 +96,7 @@ fi
 # imprime o resultado do inverso da busca na base de teste
 if test $# -eq 1 -a "$1" = "--debug" -a ${INCORRETO_BOOL} -eq 1
 then
-   grep -v "^#" ${ARQ_TEST} | grep --color=never -Ev "\"${RE_IPV6}\""
+   sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -Ev "\"${RE_IPV6}\""
    echo ""
 fi
 
