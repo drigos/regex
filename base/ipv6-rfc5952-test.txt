@@ -25,23 +25,23 @@ IP[18] = "2001:db8::1::1";                            //Incorreto
 IP[19] = "2001:db8:1:1";                              //Incorreto
 IP[20] = "2001:db8:1:1:";                             //Incorreto
 IP[21] = "2001:daab8:1:1:";                           //Incorreto
-IP[22] = "FE80::1";                                   //Correto
-IP[23] = "FC00::1";                                   //Correto
-IP[24] = "2000:0:0:0:0:0:0:0";                        //Correto
+IP[22] = "fe80::1";                                   //Correto
+IP[23] = "FC00::1";                                   //Incorreto
+IP[24] = "2000:0:0:0:0:0:0:0";                        //Incorreto
 IP[25] = "3fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Correto
-IP[26] = "Ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Correto
-IP[27] = "FF02::1";                                   //Correto
-IP[28] = "FF02::1:FF00:0000";                         //Correto
-IP[29] = "0000:0000:0000:0000:0000:0000:0000:0001";   //Correto
-IP[30] = "0:0:0:0:0:0:0:1";                           //Correto
-IP[31] = "0:00:0:0:0:0:0:1";                          //Correto
+IP[26] = "Ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Incorreto
+IP[27] = "FF02::1";                                   //Incorreto
+IP[28] = "ff02::1:ff00:0000";                         //Incorreto
+IP[29] = "0000:0000:0000:0000:0000:0000:0000:0001";   //Incorreto
+IP[30] = "0:0:0:0:0:0:0:1";                           //Incorreto
+IP[31] = "0:00:0:0:0:0:0:1";                          //Incorreto
 IP[32] = "0:0:0:0:0:0:0:0:1";                         //Incorreto
 IP[33] = "::1";                                       //Correto
-IP[34] = "0::1";                                      //Correto
+IP[34] = "0::1";                                      //Incorreto
 IP[35] = "100::";                                     //Correto
-IP[36] = "0::";                                       //Correto
-IP[37] = "::0";                                       //Correto
-IP[38] = "0::0";                                      //Correto
+IP[36] = "0::";                                       //Incorreto
+IP[37] = "::0";                                       //Incorreto
+IP[38] = "0::0";                                      //Incorreto
 IP[39] = "1111:2222::5555:";                          //Incorreto
 
 # Conjunto do aceitação básico
@@ -91,3 +91,20 @@ IP[74] = "::7:8";                                     //Correto
 IP[75] = "::8";                                       //Correto
 
 IP[76] = "::";                                        //Correto
+
+# Adequação a RFC 5952 (implementação futura)
+2001:db8:0:0:0:0:2:1                                  //Correto
+2001:db8::2:1                                         //Correto
+2001:db8::0:2:1                                       //Incorreto
+2001:db8:0:1:1:1:1:1                                  //Correto
+2001:db8::1:1:1:1:1                                   //Incorreto
+2001:0:0:1:0:0:0:1                                    //Correto
+2001::1:0:0:0:1                                       //Incorreto
+2001:0:0:1::1                                         //Correto
+2001:db8:0:0:1:0:0:1                                  //Correto
+2001:db8::1:0:0:1                                     //Correto
+2001:db8:0:0:1::1                                     //Incorreto
+2001:db8::1                                           //Correto
+2001:0db8::0001                                       //Incorreto
+2001:db8:cafe::1                                      //Correto
+2001:DB8:CAFE::1                                      //Incorreto
