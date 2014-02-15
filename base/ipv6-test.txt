@@ -1,20 +1,20 @@
 #var IP = [];
 
 # Endereço IPv4-mapeado (implementação futura)
-#IP[0]  = "::ffff:197.168.110.154";                    //Correto
-#IP[1]  = "::ffff:197.168.0.1";                        //Correto
-#IP[2]  = "::ffff:197.168..0.1";                       //Incorreto
-#IP[3]  = "::ffff:197.168.";                           //Incorreto
-#IP[4]  = "::ffff:256.168.110.154";                    //Incorreto
-#IP[5]  = "::ffff:255.255.255.255";                    //Correto
-#IP[6]  = "::ffff:255.255.255.255.255";                //Incorreto
-#IP[7]  = "::ffff:";                                   //Incorreto
-#IP[8]  = "::ffff:300.111.111.111";                    //Incorreto
-#IP[9]  = "::ffff:111.111.111.1111";                   //Incorreto
-#IP[10] = "::ffff:0.0.0.0";                            //Correto
-#IP[11] = "::ffff:0.0.0.011";                          //Incorreto
-#IP[12] = "::ffff:192.168..1";                         //Incorreto
-#IP[13] = "::ffff:192.168.*.1";                        //Incorreto
+IP[0]  = "::ffff:197.168.110.154";                    //Correto
+IP[1]  = "::ffff:197.168.0.1";                        //Correto
+IP[2]  = "::ffff:197.168..0.1";                       //Incorreto
+IP[3]  = "::ffff:197.168.";                           //Incorreto
+IP[4]  = "::ffff:256.168.110.154";                    //Incorreto
+IP[5]  = "::ffff:255.255.255.255";                    //Correto
+IP[6]  = "::ffff:255.255.255.255.255";                //Incorreto
+IP[7]  = "::ffff:";                                   //Incorreto
+IP[8]  = "::ffff:300.111.111.111";                    //Incorreto
+IP[9]  = "::ffff:111.111.111.1111";                   //Incorreto
+IP[10] = "::ffff:0.0.0.0";                            //Correto
+IP[11] = "::ffff:0.0.0.011";                          //Incorreto
+IP[12] = "::ffff:192.168..1";                         //Incorreto
+IP[13] = "::ffff:192.168.*.1";                        //Incorreto
 
 # Testes arbitrários
 IP[14] = "";                                          //Incorreto
