@@ -1,45 +1,57 @@
 #!/bin/bash
 
+# Verifica se o número de argumentos passado está correto
+if test $# -lt 1 -o $# -gt 2
+then
+   echo "Número de parâmetros incorreto"
+   exit
+fi
+
+# Verifica se o arquivo com a regex existe e se a extensão é .re
+if test -f $1 -a "re" = $(echo $1 | awk -F"." '{print $NF}')
+then
+   ARQ_REGEX=$1
+else
+   echo -e "Arquivo de expressão regular '$1' inválido.\nVerifique se a extensão do arquivo está correta, deve ser .re."
+   exit
+fi
+
 # Define o nome do arquivo de base de teste
-# este é composto pelo nome do próprio script concatenado com "-test.txt"
-ARQ_TEST=$(echo $0 | sed -r 's/(\.\/|\.sh$)//g')
-ARQ_TEST="${ARQ_TEST}-test.txt"
+# este é composto pelo nome do arquivo da regex concatenado com "-test.txt"
+# e está incluido no diretório "base"
+ARQ_TEST=$(echo ${ARQ_REGEX} | awk -F"/" '{print $NF}' | sed -r 's/\.re$//g')
+ARQ_TEST="base/${ARQ_TEST}-test.txt"
 
 # Verifica a existência do arquivo de base de teste
 if test ! -f ${ARQ_TEST}
 then
-   echo "Arquivo base de testes não encontrado."
+   echo "Arquivo base de testes '${ARQ_TEST}' inválido."
    exit
 fi
 
 ################################################################################
 
-# Define a expressão regular para MAC Address
-OCTETO="[0-9a-fA-F]{2}"
-HEXADECATETO="[0-9a-fA-F]{4}"
-
-RE_MAC="("
-RE_MAC="${RE_MAC}${OCTETO}([:-])${OCTETO}(\2${OCTETO}){4}|"  # TEST: AA:BB:CC:DD:EE:FF  AA-BB-CC-DD-EE-FF
-RE_MAC="${RE_MAC}${HEXADECATETO}(\.${HEXADECATETO}){2}"      # TEST: AABB.CCDD.EEFF
-RE_MAC="${RE_MAC})"
+# Define a expressão regular que será usada
+RE=$(sed -r '/^#|^$/d' ${ARQ_REGEX})
 
 ################################################################################
 
-if test $# -eq 1 -a "$1" = "--regex-print"
+# Caso atenda as restrições, o programa irá imprimir a regex e então finalizar
+if test $# -eq 2 -a "$2" = "--regex-print"
 then
-   echo "${RE_MAC}"
+   echo "${RE}"
    exit
 fi
 
 ################################################################################
 
 # Executa a busca pelas expressões que combinam na base de teste
-CORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE_MAC}\"")
+CORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE}\"")
 # Busca as linhas que devem estar corretas para verificar a corretude
 CORRETO2=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -F "//Correto")
 
 # Busca as linhas que não casam com a expressão regular
-INCORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -Ev "\"${RE_MAC}\"")
+INCORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -Ev "\"${RE}\"")
 # Busca as linhas que devem estar incorretas para verificar a corretude
 INCORRETO2=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -F "//Incorreto")
 
@@ -51,7 +63,7 @@ CORRETUDE_MSG="Corretude dos valores corretos:   "
 if test "${CORRETO1}" = "${CORRETO2}"
 then
    CORRETUDE_MSG="${CORRETUDE_MSG}Ok\n"
-   CORRETO_BOOL=0
+   CORRETO_BOOL=1
 else
    CORRETUDE_MSG="${CORRETUDE_MSG}Fail\n"
    CORRETO_BOOL=1
@@ -64,7 +76,7 @@ CORRETUDE_MSG="${CORRETUDE_MSG}Corretude dos valores incorretos: "
 if test "${INCORRETO1}" = "${INCORRETO2}"
 then
    CORRETUDE_MSG="${CORRETUDE_MSG}Ok\n"
-   INCORRETO_BOOL=0
+   INCORRETO_BOOL=1
 else
    CORRETUDE_MSG="${CORRETUDE_MSG}Fail\n"
    INCORRETO_BOOL=1
@@ -77,18 +89,18 @@ echo ""
 # Se for passado o parâmetro --debug
 # e a variável de erro CORRETO_BOOL estiver ativa
 # imprime o resultado da busca na base de teste
-if test $# -eq 1 -a "$1" = "--debug" -a ${CORRETO_BOOL} -eq 1
+if test $# -eq 2 -a "$2" = "--debug" -a ${CORRETO_BOOL} -eq 1
 then
-   sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE_MAC}\""
+   sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE}\""
    echo ""
 fi
 
 # Se for passado o parâmetro --debug
 # e a variável de erro INCORRETO_BOOL estiver ativa
 # imprime o resultado do inverso da busca na base de teste
-if test $# -eq 1 -a "$1" = "--debug" -a ${INCORRETO_BOOL} -eq 1
+if test $# -eq 2 -a "$2" = "--debug" -a ${INCORRETO_BOOL} -eq 1
 then
-   sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -Ev "\"${RE_MAC}\""
+   sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -Ev "\"${RE}\""
    echo ""
 fi
 
