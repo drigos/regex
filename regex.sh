@@ -8,9 +8,11 @@ then
 fi
 
 # Verifica se o arquivo com a regex existe e se a extensão é .re
-if test -f $1 -a "re" = $(echo $1 | awk -F"." '{print $NF}')
+if test -f $1
 then
    ARQ_REGEX=$1
+   test "re" = $(echo ${ARQ_REGEX} | awk -F"." '{print $NF}') && FILE_TYPE=1
+   test "sh" = $(echo ${ARQ_REGEX} | awk -F"." '{print $NF}') && FILE_TYPE=2
 else
    echo -e "Arquivo de expressão regular '$1' inválido.\nVerifique se a extensão do arquivo está correta, deve ser .re."
    exit
@@ -19,7 +21,7 @@ fi
 # Define o nome do arquivo de base de teste
 # este é composto pelo nome do arquivo da regex concatenado com "-test.txt"
 # e está incluido no diretório "base"
-ARQ_TEST=$(echo ${ARQ_REGEX} | awk -F"/" '{print $NF}' | sed -r 's/\.re$//g')
+ARQ_TEST=$(echo ${ARQ_REGEX} | awk -F"/" '{print $NF}' | sed -r 's/\.(re|sh)$//g')
 ARQ_TEST="base/${ARQ_TEST}-test.txt"
 
 # Verifica a existência do arquivo de base de teste
@@ -31,8 +33,9 @@ fi
 
 ################################################################################
 
-# Define a expressão regular que será usada
-RE=$(sed -r '/^#|^$/d' ${ARQ_REGEX})
+# Carrega a expressão regular que será usada
+test ${FILE_TYPE} -eq 1 && RE=$(sed -r '/^#|^$/d' ${ARQ_REGEX})
+test ${FILE_TYPE} -eq 2 && source ${ARQ_REGEX}
 
 ################################################################################
 
@@ -63,7 +66,7 @@ CORRETUDE_MSG="Corretude dos valores corretos:   "
 if test "${CORRETO1}" = "${CORRETO2}"
 then
    CORRETUDE_MSG="${CORRETUDE_MSG}Ok\n"
-   CORRETO_BOOL=1
+   CORRETO_BOOL=0
 else
    CORRETUDE_MSG="${CORRETUDE_MSG}Fail\n"
    CORRETO_BOOL=1
@@ -76,7 +79,7 @@ CORRETUDE_MSG="${CORRETUDE_MSG}Corretude dos valores incorretos: "
 if test "${INCORRETO1}" = "${INCORRETO2}"
 then
    CORRETUDE_MSG="${CORRETUDE_MSG}Ok\n"
-   INCORRETO_BOOL=1
+   INCORRETO_BOOL=0
 else
    CORRETUDE_MSG="${CORRETUDE_MSG}Fail\n"
    INCORRETO_BOOL=1

@@ -93,18 +93,18 @@ IP[75] = "::8";                                       //Correto
 IP[76] = "::";                                        //Correto
 
 # Adequação a RFC 5952 (implementação futura)
-2001:db8:0:0:0:0:2:1                                  //Correto
-2001:db8::2:1                                         //Correto
-2001:db8::0:2:1                                       //Incorreto
-2001:db8:0:1:1:1:1:1                                  //Correto
-2001:db8::1:1:1:1:1                                   //Incorreto
-2001:0:0:1:0:0:0:1                                    //Correto
-2001::1:0:0:0:1                                       //Incorreto
-2001:0:0:1::1                                         //Correto
-2001:db8:0:0:1:0:0:1                                  //Correto
-2001:db8::1:0:0:1                                     //Correto
-2001:db8:0:0:1::1                                     //Incorreto
-2001:db8::1                                           //Correto
-2001:0db8::0001                                       //Incorreto
-2001:db8:cafe::1                                      //Correto
-2001:DB8:CAFE::1                                      //Incorreto
+IP[77] = "2001:db8:0:0:0:0:2:1";                      //Correto
+IP[78] = "2001:db8::2:1";                             //Correto
+IP[79] = "2001:db8::0:2:1";                           //Incorreto
+IP[80] = "2001:db8:0:1:1:1:1:1";                      //Correto
+IP[81] = "2001:db8::1:1:1:1:1";                       //Incorreto
+IP[82] = "2001:0:0:1:0:0:0:1";                        //Correto
+IP[83] = "2001::1:0:0:0:1";                           //Incorreto
+IP[84] = "2001:0:0:1::1";                             //Correto
+IP[85] = "2001:db8:0:0:1:0:0:1";                      //Correto
+IP[86] = "2001:db8::1:0:0:1";                         //Correto
+IP[87] = "2001:db8:0:0:1::1";                         //Incorreto
+IP[88] = "2001:db8::1";                               //Correto
+IP[89] = "2001:0db8::0001";                           //Incorreto
+IP[90] = "2001:db8:cafe::1";                          //Correto
+IP[91] = "2001:DB8:CAFE::1";                          //Incorreto
