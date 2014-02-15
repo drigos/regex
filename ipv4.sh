@@ -20,6 +20,14 @@ RE_IPV4="${OCTETO}(\.${OCTETO}){3}"
 
 ################################################################################
 
+if test $# -eq 1 -a "$1" = "--regex-print"
+then
+   echo "${RE_IPV4}"
+   exit
+fi
+
+################################################################################
+
 # Executa a busca pelas expressões que combinam na base de teste
 CORRETO1=$(sed -r '/^#|^$/d' ${ARQ_TEST} | grep --color=never -E "\"${RE_IPV4}\"")
 # Busca as linhas que devem estar corretas para verificar a corretude
