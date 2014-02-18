@@ -1,6 +1,6 @@
 #var IP = [];
 
-# Endereço IPv4-mapeado (implementação futura)
+# Endereço IPv4-mapeado
 IP[0]  = "::ffff:197.168.110.154";                    //Correto
 IP[1]  = "::ffff:197.168.0.1";                        //Correto
 IP[2]  = "::ffff:197.168..0.1";                       //Incorreto
@@ -92,7 +92,7 @@ IP[75] = "::8";                                       //Correto
 
 IP[76] = "::";                                        //Correto
 
-# Adequação a RFC 5952 (implementação futura)
+# Adequação a RFC 5952
 IP[77] = "2001:db8:0:0:0:0:2:1";                      //Correto
 IP[78] = "2001:db8::2:1";                             //Correto
 IP[79] = "2001:db8::0:2:1";                           //Incorreto

@@ -1,0 +1,93 @@
+#var IP = [];
+
+# Endereço IPv4-mapeado
+IP[0]  = "::ffff:197.168.110.154";                    //Incorreto
+IP[1]  = "::ffff:197.168.0.1";                        //Incorreto
+IP[2]  = "::ffff:197.168..0.1";                       //Incorreto
+IP[3]  = "::ffff:197.168.";                           //Incorreto
+IP[4]  = "::ffff:256.168.110.154";                    //Incorreto
+IP[5]  = "::ffff:255.255.255.255";                    //Incorreto
+IP[6]  = "::ffff:255.255.255.255.255";                //Incorreto
+IP[7]  = "::ffff:";                                   //Incorreto
+IP[8]  = "::ffff:300.111.111.111";                    //Incorreto
+IP[9]  = "::ffff:111.111.111.1111";                   //Incorreto
+IP[10] = "::ffff:0.0.0.0";                            //Incorreto
+IP[11] = "::ffff:0.0.0.011";                          //Incorreto
+IP[12] = "::ffff:192.168..1";                         //Incorreto
+IP[13] = "::ffff:192.168.*.1";                        //Incorreto
+
+# Testes arbitrários
+IP[14] = "";                                          //Incorreto
+IP[15] = "2001:db8:cafe:1::1";                        //Incorreto
+IP[16] = "2001:db8:cafe:1:::1";                       //Incorreto
+IP[17] = "2001:db8:*:1::1";                           //Incorreto
+IP[18] = "2001:db8::1::1";                            //Incorreto
+IP[19] = "2001:db8:1:1";                              //Incorreto
+IP[20] = "2001:db8:1:1:";                             //Incorreto
+IP[21] = "2001:daab8:1:1:";                           //Incorreto
+IP[22] = "FE80::1";                                   //Incorreto
+IP[23] = "FC00::1";                                   //Incorreto
+IP[24] = "2000:0:0:0:0:0:0:0";                        //Incorreto
+IP[25] = "3fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Incorreto
+IP[26] = "Ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";   //Incorreto
+IP[27] = "FF02::1";                                   //Correto
+IP[28] = "FF02::1:FF00:0000";                         //Correto
+IP[29] = "0000:0000:0000:0000:0000:0000:0000:0001";   //Incorreto
+IP[30] = "0:0:0:0:0:0:0:1";                           //Incorreto
+IP[31] = "0:00:0:0:0:0:0:1";                          //Incorreto
+IP[32] = "0:0:0:0:0:0:0:0:1";                         //Incorreto
+IP[33] = "::1";                                       //Incorreto
+IP[34] = "0::1";                                      //Incorreto
+IP[35] = "100::";                                     //Incorreto
+IP[36] = "0::";                                       //Incorreto
+IP[37] = "::0";                                       //Incorreto
+IP[38] = "0::0";                                      //Incorreto
+IP[39] = "1111:2222::5555:";                          //Incorreto
+
+# Conjunto do aceitação básico
+IP[40] = "FF00:2:3:4:5:6:7:8"                         //Correto
+
+IP[41] = "FF00:2:3:4:5:6:7::";                        //Correto
+IP[42] = "FF00:2:3:4:5:6::";                          //Correto
+IP[43] = "FF00:2:3:4:5::";                            //Correto
+IP[44] = "FF00:2:3:4::";                              //Correto
+IP[45] = "FF00:2:3::";                                //Correto
+IP[46] = "FF00:2::";                                  //Correto
+IP[47] = "FF00::";                                    //Correto
+
+IP[48] = "FF00:2:3:4:5:6::8";                         //Correto
+IP[49] = "FF00:2:3:4:5::8";                           //Correto
+IP[50] = "FF00:2:3:4::8";                             //Correto
+IP[51] = "FF00:2:3::8";                               //Correto
+IP[52] = "FF00:2::8";                                 //Correto
+IP[53] = "FF00::8";                                   //Correto
+
+IP[54] = "FF00:2:3:4:5::7:8";                         //Correto
+IP[55] = "FF00:2:3:4::7:8";                           //Correto
+IP[56] = "FF00:2:3::7:8";                             //Correto
+IP[57] = "FF00:2::7:8";                               //Correto
+IP[58] = "FF00::7:8";                                 //Correto
+
+IP[59] = "FF00:2:3:4::6:7:8";                         //Correto
+IP[60] = "FF00:2:3::6:7:8";                           //Correto
+IP[61] = "FF00:2::6:7:8";                             //Correto
+IP[62] = "FF00::6:7:8";                               //Correto
+
+IP[63] = "FF00:2:3::5:6:7:8";                         //Correto
+IP[64] = "FF00:2::5:6:7:8";                           //Correto
+IP[65] = "FF00::5:6:7:8";                             //Correto
+
+IP[66] = "FF00:2::4:5:6:7:8";                         //Correto
+IP[67] = "FF00::4:5:6:7:8";                           //Correto
+
+IP[68] = "FF00::3:4:5:6:7:8";                         //Correto
+
+IP[69] = "::2:3:4:5:6:7:8";                           //Incorreto
+IP[70] = "::3:4:5:6:7:8";                             //Incorreto
+IP[71] = "::4:5:6:7:8";                               //Incorreto
+IP[72] = "::5:6:7:8";                                 //Incorreto
+IP[73] = "::6:7:8";                                   //Incorreto
+IP[74] = "::7:8";                                     //Incorreto
+IP[75] = "::8";                                       //Incorreto
+
+IP[76] = "::";                                        //Incorreto
